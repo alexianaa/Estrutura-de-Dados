@@ -39,11 +39,25 @@ TNo *IncluiCalda(TNo *pLista, int pValor)
     return pLista;
 }
 
+TNo *IncluiAntes(TNo *pLista, int pChave, int pValor)
+{
+    TNo *pNovoNo, *pAux;
+    pNovoNo = (TNo *)malloc(sizeof(TNo));
+    pNovoNo->Numero = pValor;
+    pAux = pLista;
+    while (pAux->Prox->Numero != pChave)
+        pAux = pAux->Prox;
+    pNovoNo->Prox = pAux->Prox;
+    pAux->Prox = pNovoNo;
+    return pLista;
+}
+
 int main()
 {
     TNo *head = NULL;
     head = IncluiCabeca(head, 3);
-    head = IncluiCalda(head,5);
+    head = IncluiCalda(head, 5);
+    head = IncluiAntes(head,5,7);
     Imprime(head);
 
     return 0;
