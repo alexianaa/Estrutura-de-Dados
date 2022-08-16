@@ -52,12 +52,22 @@ TNo *IncluiAntes(TNo *pLista, int pChave, int pValor)
     return pLista;
 }
 
+TNo *ExcluiCabeca(TNo *pLista)
+{
+    TNo *pAux;
+    pAux = pLista;
+    pLista = pLista->Prox;
+    free(pAux);
+    return pLista;
+}
+
 int main()
 {
     TNo *head = NULL;
     head = IncluiCabeca(head, 3);
     head = IncluiCalda(head, 5);
-    head = IncluiAntes(head,5,7);
+    head = IncluiAntes(head, 5, 7);
+    head = ExcluiCabeca(head);
     Imprime(head);
 
     return 0;
